@@ -1,0 +1,708 @@
+sr no.,,error
+,,
+1,,"[
+  {
+    ""error"": ""CrashLoopBackOff"",
+    ""pod"": ""web-app-pod-1"",
+    ""namespace"": ""default"",
+    ""container"": ""web-container"",
+    ""log"": ""Error: Missing database connection string"",
+    ""info"": {
+      ""reason"": ""CrashLoopBackOff"",
+      ""message"": ""Back-off 5m0s restarting failed container"",
+      ""lastState"": {
+        ""terminated"": {
+          ""exitCode"": 1,
+          ""reason"": ""Error"",
+          ""message"": ""Application failed to connect to DB"",
+          ""startedAt"": ""2024-10-24T10:10:00Z"",
+          ""finishedAt"": ""2024-10-24T10:10:05Z""
+        }
+      },
+      ""restartCount"": 5
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Failed"",
+        ""message"": ""Failed to pull image 'web-app:latest'"",
+        ""firstTimestamp"": ""2024-10-24T10:05:00Z"",
+        ""lastTimestamp"": ""2024-10-24T10:10:00Z"",
+        ""count"": 3
+      },
+      {
+        ""type"": ""Normal"",
+        ""reason"": ""Pulled"",
+        ""message"": ""Successfully pulled image 'web-app:latest'"",
+        ""firstTimestamp"": ""2024-10-24T10:10:05Z"",
+        ""lastTimestamp"": ""2024-10-24T10:10:06Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""ImagePullBackOff"",
+    ""pod"": ""backend-service-pod-1"",
+    ""namespace"": ""prod"",
+    ""container"": ""backend-container"",
+    ""log"": ""Failed to pull image 'backend-service:v2.0.0'"",
+    ""info"": {
+      ""reason"": ""ImagePullBackOff"",
+      ""message"": ""Back-off pulling image 'backend-service:v2.0.0'"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""ImagePullBackOff"",
+          ""message"": ""Image 'backend-service:v2.0.0' not found""
+        }
+      },
+      ""restartCount"": 2
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Failed"",
+        ""message"": ""Failed to pull image 'backend-service:v2.0.0'"",
+        ""firstTimestamp"": ""2024-10-24T09:55:00Z"",
+        ""lastTimestamp"": ""2024-10-24T10:00:00Z"",
+        ""count"": 2
+      }
+    ]
+  },
+  {
+    ""error"": ""OOMKilled"",
+    ""pod"": ""data-processing-pod-1"",
+    ""namespace"": ""analytics"",
+    ""container"": ""processing-container"",
+    ""log"": ""OutOfMemoryError: Java heap space"",
+    ""info"": {
+      ""reason"": ""OOMKilled"",
+      ""message"": ""Container killed due to memory limit exceeded"",
+      ""lastState"": {
+        ""terminated"": {
+          ""exitCode"": 137,
+          ""reason"": ""OOMKilled"",
+          ""message"": ""Process terminated due to out of memory"",
+          ""startedAt"": ""2024-10-24T08:45:00Z"",
+          ""finishedAt"": ""2024-10-24T09:10:00Z""
+        }
+      },
+      ""restartCount"": 1
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""OOMKilled"",
+        ""message"": ""Container killed as it exceeded memory limit"",
+        ""firstTimestamp"": ""2024-10-24T09:10:00Z"",
+        ""lastTimestamp"": ""2024-10-24T09:10:01Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""NodeNotReady"",
+    ""pod"": ""auth-service-pod-1"",
+    ""namespace"": ""authentication"",
+    ""container"": ""auth-container"",
+    ""log"": ""Pod eviction due to node not ready"",
+    ""info"": {
+      ""reason"": ""NodeNotReady"",
+      ""message"": ""Node 'node-1' marked as NotReady"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""NodeNotReady"",
+          ""message"": ""Node is unavailable""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Evicted"",
+        ""message"": ""Pod evicted due to node 'node-1' not being ready"",
+        ""firstTimestamp"": ""2024-10-24T08:00:00Z"",
+        ""lastTimestamp"": ""2024-10-24T08:10:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""Pending"",
+    ""pod"": ""api-gateway-pod-1"",
+    ""namespace"": ""default"",
+    ""container"": ""gateway-container"",
+    ""log"": ""Pod stuck in pending state due to insufficient CPU"",
+    ""info"": {
+      ""reason"": ""Pending"",
+      ""message"": ""Insufficient CPU resources"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""Pending"",
+          ""message"": ""No nodes available to schedule the pod""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""FailedScheduling"",
+        ""message"": ""0/5 nodes are available: insufficient CPU"",
+        ""firstTimestamp"": ""2024-10-24T07:50:00Z"",
+        ""lastTimestamp"": ""2024-10-24T08:00:00Z"",
+        ""count"": 2
+      }
+    ]
+  },
+  {
+    ""error"": ""PodEvicted"",
+    ""pod"": ""batch-job-pod-1"",
+    ""namespace"": ""jobs"",
+    ""container"": ""job-container"",
+    ""log"": ""Pod evicted due to disk pressure"",
+    ""info"": {
+      ""reason"": ""Evicted"",
+      ""message"": ""Pod evicted due to disk pressure on the node"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""Evicted"",
+          ""message"": ""Node has insufficient disk space""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Evicted"",
+        ""message"": ""Pod evicted due to disk pressure"",
+        ""firstTimestamp"": ""2024-10-24T06:45:00Z"",
+        ""lastTimestamp"": ""2024-10-24T07:00:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""FailedMount"",
+    ""pod"": ""web-app-pod-2"",
+    ""namespace"": ""default"",
+    ""container"": ""web-container"",
+    ""log"": ""Failed to mount volume 'web-data-volume'"",
+    ""info"": {
+      ""reason"": ""FailedMount"",
+      ""message"": ""Unable to mount volume 'web-data-volume'"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""FailedMount"",
+          ""message"": ""MountVolume.SetUp failed for volume 'web-data-volume'""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""FailedMount"",
+        ""message"": ""Unable to mount volume 'web-data-volume' to pod"",
+        ""firstTimestamp"": ""2024-10-24T05:30:00Z"",
+        ""lastTimestamp"": ""2024-10-24T05:35:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""Unauthorized"",
+    ""pod"": ""db-migration-pod-1"",
+    ""namespace"": ""database"",
+    ""container"": ""migration-container"",
+    ""log"": ""Error: Unauthorized access to database"",
+    ""info"": {
+      ""reason"": ""Unauthorized"",
+      ""message"": ""Container failed due to unauthorized access to the database"",
+      ""lastState"": {
+        ""terminated"": {
+          ""exitCode"": 1,
+          ""reason"": ""Unauthorized"",
+          ""message"": ""Access denied for user 'migration-user'"",
+          ""startedAt"": ""2024-10-24T04:20:00Z"",
+          ""finishedAt"": ""2024-10-24T04:25:00Z""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Unauthorized"",
+        ""message"": ""Access denied for user 'migration-user' on the database"",
+        ""firstTimestamp"": ""2024-10-24T04:25:00Z"",
+        ""lastTimestamp"": ""2024-10-24T04:26:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""FailedAttachVolume"",
+    ""pod"": ""file-processing-pod-1"",
+    ""namespace"": ""processing"",
+    ""container"": ""file-container"",
+    ""log"": ""Failed to attach volume 'file-storage-volume'"",
+    ""info"": {
+      ""reason"": ""FailedAttachVolume"",
+      ""message"": ""Unable to attach volume 'file-storage-volume' to the node"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""FailedAttachVolume"",
+          ""message"": ""AttachVolume.Attach failed for volume 'file-storage-volume'""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""FailedAttachVolume"",
+        ""message"": ""Unable to attach volume 'file-storage-volume' to node"",
+        ""firstTimestamp"": ""2024-10-24T03:15:00Z"",
+        ""lastTimestamp"": ""2024-10-24T03:20:00Z"",
+        ""count"": 2
+      }
+    ]
+  },
+  {
+    ""error"": ""Terminating"",
+    ""pod"": ""logging-service-pod-1"",
+    ""namespace"": ""logging"",
+    ""container"": ""logging-container"",
+    ""log"": ""Pod is stuck in terminating state"",
+    ""info"": {
+      ""reason"": ""Terminating"",
+      ""message"": ""Pod has been in 'Terminating' state for over 5 minutes"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""Terminating"",
+          ""message"": ""Pod stuck during termination process""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Terminating"",
+        ""message"": ""Pod failed to terminate within grace period"",
+        ""firstTimestamp"": ""2024-10-24T02:00:00Z"",
+        ""lastTimestamp"": ""2024-10-24T02:05:00Z"",
+        ""count"": 1
+      }
+    ]
+  }
+]"
+,,
+2,,"[
+  {
+    ""error"": ""DeadlineExceeded"",
+    ""pod"": ""frontend-service-pod-1"",
+    ""namespace"": ""frontend"",
+    ""container"": ""frontend-container"",
+    ""log"": ""Context deadline exceeded while processing request"",
+    ""info"": {
+      ""reason"": ""DeadlineExceeded"",
+      ""message"": ""Request exceeded the specified timeout duration"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""DeadlineExceeded"",
+          ""message"": ""Pod did not respond within the specified deadline""
+        }
+      },
+      ""restartCount"": 2
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""DeadlineExceeded"",
+        ""message"": ""Pod took longer than the allocated time to respond"",
+        ""firstTimestamp"": ""2024-10-24T11:05:00Z"",
+        ""lastTimestamp"": ""2024-10-24T11:10:00Z"",
+        ""count"": 3
+      }
+    ]
+  },
+  {
+    ""error"": ""NodeLost"",
+    ""pod"": ""storage-service-pod-1"",
+    ""namespace"": ""storage"",
+    ""container"": ""storage-container"",
+    ""log"": ""Node hosting the pod has been lost"",
+    ""info"": {
+      ""reason"": ""NodeLost"",
+      ""message"": ""Node 'node-2' is no longer available"",
+      ""lastState"": {
+        ""terminated"": {
+          ""exitCode"": 0,
+          ""reason"": ""NodeLost"",
+          ""message"": ""Pod evicted due to node failure"",
+          ""startedAt"": ""2024-10-24T10:00:00Z"",
+          ""finishedAt"": ""2024-10-24T10:15:00Z""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""NodeLost"",
+        ""message"": ""Pod evicted as the node 'node-2' has been lost"",
+        ""firstTimestamp"": ""2024-10-24T10:15:00Z"",
+        ""lastTimestamp"": ""2024-10-24T10:20:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""ErrImagePull"",
+    ""pod"": ""app-pod-2"",
+    ""namespace"": ""default"",
+    ""container"": ""app-container"",
+    ""log"": ""Error pulling image 'myapp:v1.0'"",
+    ""info"": {
+      ""reason"": ""ErrImagePull"",
+      ""message"": ""Failed to pull image 'myapp:v1.0'"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""ErrImagePull"",
+          ""message"": ""Image not found on the registry""
+        }
+      },
+      ""restartCount"": 4
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Failed"",
+        ""message"": ""Failed to pull image 'myapp:v1.0'"",
+        ""firstTimestamp"": ""2024-10-24T09:40:00Z"",
+        ""lastTimestamp"": ""2024-10-24T09:50:00Z"",
+        ""count"": 3
+      }
+    ]
+  },
+  {
+    ""error"": ""ErrImageNeverPull"",
+    ""pod"": ""service-pod-1"",
+    ""namespace"": ""prod"",
+    ""container"": ""service-container"",
+    ""log"": ""ImagePullPolicy set to 'Never', but image not present locally"",
+    ""info"": {
+      ""reason"": ""ErrImageNeverPull"",
+      ""message"": ""ImagePullPolicy 'Never' prevents pulling image from registry"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""ErrImageNeverPull"",
+          ""message"": ""Image not found locally, and pull policy set to 'Never'""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Failed"",
+        ""message"": ""Image not found locally and pull policy prevents fetching from registry"",
+        ""firstTimestamp"": ""2024-10-24T09:00:00Z"",
+        ""lastTimestamp"": ""2024-10-24T09:05:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""FailedPreStartHook"",
+    ""pod"": ""worker-pod-1"",
+    ""namespace"": ""workers"",
+    ""container"": ""worker-container"",
+    ""log"": ""Pre-start hook failed: connection refused"",
+    ""info"": {
+      ""reason"": ""FailedPreStartHook"",
+      ""message"": ""Pre-start hook failed for the container"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""FailedPreStartHook"",
+          ""message"": ""Hook failed due to network issues""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""FailedPreStartHook"",
+        ""message"": ""Pre-start hook for container 'worker-container' failed"",
+        ""firstTimestamp"": ""2024-10-24T08:15:00Z"",
+        ""lastTimestamp"": ""2024-10-24T08:20:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""ContainerCreating"",
+    ""pod"": ""cache-pod-1"",
+    ""namespace"": ""caching"",
+    ""container"": ""cache-container"",
+    ""log"": ""Pod stuck in ContainerCreating state due to network issues"",
+    ""info"": {
+      ""reason"": ""ContainerCreating"",
+      ""message"": ""Container creation is taking longer than expected"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""ContainerCreating"",
+          ""message"": ""Still waiting for the container to be created""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""FailedCreatePodContainer"",
+        ""message"": ""Network issue during pod container creation"",
+        ""firstTimestamp"": ""2024-10-24T07:30:00Z"",
+        ""lastTimestamp"": ""2024-10-24T07:35:00Z"",
+        ""count"": 2
+      }
+    ]
+  },
+  {
+    ""error"": ""PodStuckTerminating"",
+    ""pod"": ""logging-service-pod-2"",
+    ""namespace"": ""logging"",
+    ""container"": ""logging-container"",
+    ""log"": ""Pod stuck in Terminating state for over 10 minutes"",
+    ""info"": {
+      ""reason"": ""PodStuckTerminating"",
+      ""message"": ""Pod failed to terminate within the allocated grace period"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""PodStuckTerminating"",
+          ""message"": ""Pod has been in 'Terminating' state for an extended time""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Terminating"",
+        ""message"": ""Pod failed to terminate within grace period"",
+        ""firstTimestamp"": ""2024-10-24T06:20:00Z"",
+        ""lastTimestamp"": ""2024-10-24T06:30:00Z"",
+        ""count"": 1
+      }
+    ]
+  },
+  {
+    ""error"": ""ReadinessProbeFailed"",
+    ""pod"": ""database-pod-1"",
+    ""namespace"": ""databases"",
+    ""container"": ""db-container"",
+    ""log"": ""Readiness probe failed: unable to connect to the database"",
+    ""info"": {
+      ""reason"": ""ReadinessProbeFailed"",
+      ""message"": ""Readiness probe failed for container 'db-container'"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""ReadinessProbeFailed"",
+          ""message"": ""Container is not ready""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""Failed"",
+        ""message"": ""Readiness probe for container 'db-container' failed"",
+        ""firstTimestamp"": ""2024-10-24T05:50:00Z"",
+        ""lastTimestamp"": ""2024-10-24T06:00:00Z"",
+        ""count"": 5
+      }
+    ]
+  },
+  {
+    ""error"": ""VolumeNotFound"",
+    ""pod"": ""app-pod-3"",
+    ""namespace"": ""default"",
+    ""container"": ""app-container"",
+    ""log"": ""Failed to find volume 'app-data-volume'"",
+    ""info"": {
+      ""reason"": ""VolumeNotFound"",
+      ""message"": ""Volume 'app-data-volume' could not be found"",
+      ""lastState"": {
+        ""waiting"": {
+          ""reason"": ""VolumeNotFound"",
+          ""message"": ""Volume could not be mounted as it was not found""
+        }
+      }
+    },
+    ""events"": [
+      {
+        ""type"": ""Warning"",
+        ""reason"": ""FailedMount"",
+        ""message"": ""Unable to mount volume 'app-data-volume' as it does not exist"",
+        ""firstTimestamp"": ""2024-10-24T04:45:00Z"",
+        ""lastTimestamp"": ""2024-10-24T05:00:00Z"",
+        ""count"": 1
+      }
+    ]
+  }
+]"
+,,
+3,,"[
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:00:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""nginx-deployment-75b4f97c4b-gkxlm"",
+            ""container_name"": ""nginx"",
+            ""node_name"": ""worker-node-01""
+        },
+        ""log"": ""Error: Failed to pull image \""nginx:latest\"": rpc error: code = NotFound desc = failed to pull and unpack image \""docker.io/library/nginx:latest\"": failed to resolve reference \""docker.io/library/nginx:latest\"": not found"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Failed to start container"",
+            ""count"": 5
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:01:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""redis-deployment-5f69dc68c5-t6l7n"",
+            ""container_name"": ""redis"",
+            ""node_name"": ""worker-node-02""
+        },
+        ""log"": ""Error: Container exited with code 1. Logs: [1] FATAL: Redis is not configured to run as a cluster"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""CrashLoopBackOff"",
+            ""message"": ""Container is restarting"",
+            ""count"": 10
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:02:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""my-app-7b8f9c8b6d-fh2jk"",
+            ""container_name"": ""my-app-container"",
+            ""node_name"": ""worker-node-03""
+        },
+        ""log"": ""Error: Database connection failed: timeout after 30 seconds"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Failed to connect to database"",
+            ""count"": 3
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:03:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""frontend-deployment-6c88c8cdb4-tpl5z"",
+            ""container_name"": ""frontend"",
+            ""node_name"": ""worker-node-04""
+        },
+        ""log"": ""Error: Failed to fetch resource from the API: 404 Not Found"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""API request failed"",
+            ""count"": 4
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:04:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""backend-deployment-564cfcd8b7-wrs8g"",
+            ""container_name"": ""backend"",
+            ""node_name"": ""worker-node-05""
+        },
+        ""log"": ""Error: Internal Server Error: Unable to process request"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Server encountered an error"",
+            ""count"": 2
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:05:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""mongo-deployment-86b6b75867-5g9nk"",
+            ""container_name"": ""mongo"",
+            ""node_name"": ""worker-node-06""
+        },
+        ""log"": ""Error: MongoDB failed to start: insufficient storage space available"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Pod cannot start"",
+            ""count"": 7
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:06:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""kafka-deployment-7b8d4c7db5-7h6tz"",
+            ""container_name"": ""kafka"",
+            ""node_name"": ""worker-node-07""
+        },
+        ""log"": ""Error: Kafka broker not found: ensure the cluster is configured correctly."",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Failed to establish Kafka connection"",
+            ""count"": 8
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:07:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""mysql-deployment-5d4cf84c8-fmkw9"",
+            ""container_name"": ""mysql"",
+            ""node_name"": ""worker-node-08""
+        },
+        ""log"": ""Error: MySQL server has gone away: connection lost"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Database connection error"",
+            ""count"": 9
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:08:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""app-server-deployment-68c8c6c9b5-fq9s8"",
+            ""container_name"": ""app-server"",
+            ""node_name"": ""worker-node-09""
+        },
+        ""log"": ""Error: Application failed to start: configuration file missing"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""Failed"",
+            ""message"": ""Pod initialization failure"",
+            ""count"": 6
+        }
+    },
+    {
+        ""info"": {
+            ""timestamp"": ""2024-10-24T12:09:00Z"",
+            ""namespace"": ""default"",
+            ""pod_name"": ""cache-deployment-59b68dfc8c-9w4x7"",
+            ""container_name"": ""cache"",
+            ""node_name"": ""worker-node-10""
+        },
+        ""log"": ""Error: Cache service failed to start: timeout on startup"",
+        ""pod_event"": {
+            ""event_type"": ""Warning"",
+            ""reason"": ""CrashLoopBackOff"",
+            ""message"": ""Pod is crashing repeatedly"",
+            ""count"": 11
+        }
+    }
+]"
