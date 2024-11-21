@@ -14,6 +14,36 @@ def initialize_database(db_name="prompts.db"):
             value TEXT NOT NULL
         )
     ''')
+    cursor.execute('''
+        ALTER TABLE prompts
+        ADD COLUMN error TEXT;
+    ''')
+
+    cursor.execute('''
+        ALTER TABLE prompts
+        ADD COLUMN pod TEXT;
+    ''')
+
+    cursor.execute('''
+        ALTER TABLE prompts
+        ADD COLUMN namespace TEXT;
+    ''')
+
+    cursor.execute('''
+        ALTER TABLE prompts
+        ADD COLUMN container TEXT;
+    ''')
+
+    cursor.execute('''
+        ALTER TABLE prompts
+        ADD COLUMN log TEXT;
+    ''')
+
+    cursor.execute('''
+        ALTER TABLE prompts
+        ADD COLUMN info TEXT;
+    ''')
+
     conn.commit()
     conn.close()
 
