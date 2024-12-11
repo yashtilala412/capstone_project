@@ -1,4 +1,13 @@
 # Capstone Project
 
-Take error data from the csv file. Give that data to LLM model. <br>
-Take the output of the LLM model and extract the command from output. store into the database
+## Setup
+
+```
+clone https://github.com/yashtilala412/capstone_project.git
+```
+
+## Run the following command
+
+```
+python main.py
+```
