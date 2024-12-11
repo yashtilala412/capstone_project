@@ -1,0 +1,9 @@
+id,error_name,application_name,error_data
+1,CommandNotFoundError,server-side,"'nodemon' is not recognized as an internal or external command, operable program or batch file."
+2,PackageNotInstalledError,front-end,"'react-scripts' is not recognized as an internal or external command, operable program or batch file."
+3,ModuleNotFoundError,backend-api,Cannot find module 'express'.
+4,PermissionDeniedError,file-upload,"EACCES: permission denied, access '/usr/local/lib/node_modules'."
+5,SyntaxError,data-processing,Unexpected token '}' in JSON at position 35.
+6,DatabaseConnectionError,user-service,Unable to connect to the database: Connection refused.
+7,OutOfMemoryError,media-server,JavaScript heap out of memory.
+8,TimeoutError,payment-gateway,Request timeout while connecting to the payment provider API.
