@@ -35,8 +35,7 @@ def make_prompt(json_object):
     # Return the prompt
     return user_prompt
 
-
-def store_data(data_object,response,command):
+def store_data(data_object, response, command):
     """
     Stores the provided data object into the llm_data table in the SQLite database.
 
@@ -45,12 +44,16 @@ def store_data(data_object,response,command):
             - error_name (str): Name of the error.
             - error_data (str): Detailed error information.
             - application_name (str): Name of the application.
-            - llm_output (str): Output from the LLM.
-            - commands (str): Commands suggested to resolve the error.
-            - status (bool): Status of whether the error is resolved.
+        response (str): Output from the LLM.
+        command (str): Commands suggested to resolve the error.
     """
-    # Database file name
-    db_file = "output.db"
+    # Directory and database file name
+    data_directory = "data"
+    db_file = os.path.join(data_directory, "output.db")
+
+    # Ensure the data directory exists
+    if not os.path.exists(data_directory):
+        os.makedirs(data_directory)
 
     # Establish connection to the SQLite database (creates it if it doesn't exist)
     conn = sqlite3.connect(db_file)
@@ -93,13 +96,12 @@ def store_data(data_object,response,command):
     conn.commit()
     conn.close()
 
-
 def groq_model_call(prompt):
     chat_completion = client.chat.completions.create(
             messages=[
                 {
                     "role":"system",
-                    "content":"In the application there is error give me the best suitable solution for the error."
+                    "content":"In the application there is error give me the best suitable solution for the error.Don't give any other text and anything else if the error is soleved using commad."
                 },
                 {
                     "role": "user",
