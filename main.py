@@ -4,6 +4,7 @@ import os
 from dotenv import load_dotenv
 from flask import Flask
 from groq import Groq
+import sqlite3
 
 # Load environment variables from .env file
 load_dotenv()
@@ -33,6 +34,65 @@ def make_prompt(json_object):
     
     # Return the prompt
     return user_prompt
+
+
+def store_data(data_object,response,command):
+    """
+    Stores the provided data object into the llm_data table in the SQLite database.
+
+    Args:
+        data_object (dict): A dictionary containing the following keys:
+            - error_name (str): Name of the error.
+            - error_data (str): Detailed error information.
+            - application_name (str): Name of the application.
+            - llm_output (str): Output from the LLM.
+            - commands (str): Commands suggested to resolve the error.
+            - status (bool): Status of whether the error is resolved.
+    """
+    # Database file name
+    db_file = "output.db"
+
+    # Establish connection to the SQLite database (creates it if it doesn't exist)
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+    # Create the table if it does not exist
+    create_table_query = """
+    CREATE TABLE IF NOT EXISTS llm_data (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        error_name TEXT NOT NULL,
+        error_data TEXT NOT NULL,
+        application_name TEXT NOT NULL,
+        llm_output TEXT NOT NULL,
+        commands TEXT NOT NULL,
+        status BOOLEAN NOT NULL DEFAULT 0
+    );
+    """
+    cursor.execute(create_table_query)
+
+    # Insert data into the table
+    insert_query = """
+    INSERT INTO llm_data (error_name, error_data, application_name, llm_output, commands, status)
+    VALUES (?, ?, ?, ?, ?, ?);
+    """
+
+    # Extract values from the data_object
+    values = (
+        data_object["error_name"],
+        data_object["error_data"],
+        data_object["application_name"],
+        response,
+        command,
+        False,
+    )
+
+    # Execute the insert query
+    cursor.execute(insert_query, values)
+
+    # Commit the transaction and close the connection
+    conn.commit()
+    conn.close()
+
 
 def groq_model_call(prompt):
     chat_completion = client.chat.completions.create(
@@ -77,7 +137,8 @@ def process_csv(file_path):
         json_object = json.loads(json_string)
         user_prompt=make_prompt(json_object)
         print(json_object)
-        groq_model_call(user_prompt)
+        response=groq_model_call(user_prompt)
+        store_data(json_object,response,response)
 
 # Execute the process
 # if __name__ == '__main__':
